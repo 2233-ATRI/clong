@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#ifndef _FILE_DEFINED
+#endif
+typedef struct
+{  short level;      //缓冲区满或空的程度
+
+   unsigned flags;   //文件状态标志
+   
+   char fd;          //文件描述符
+   
+   unsigned char hold;  //如缓冲区无内容不读取字符
+   
+   short bsize;            //缓冲区的大小
+   
+   unsigned char*buffer;     //数据缓冲区的位置
+   
+   unsigned char*curp;      //文件位置标记指针当前的指向
+   
+   unsigned istemp;        //临时文件指示器
+   
+   short token;         //用于有效性检查
+   }FILE;
+   //这是TC2.0中的定义
+struct _iobuf {
+
+ char *_ptr; //文件输入的下一个位置
+        int   _cnt;  //当前缓冲区的相对位置
+        char *_base;  //指基础位置(即是文件的其始位置) 
+        int   _flag;  //文件标志
+        int   _file;   //文件的有效性验证
+        int   _charbuf;  //检查缓冲区状况,如果无缓冲区则不读取
+        int   _bufsiz;   //缓冲区大小
+        char *_tmpfname;  //临时文件名
+        };
+typedef struct _iobuf FILE;
+
