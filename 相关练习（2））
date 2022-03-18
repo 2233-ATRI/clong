@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<dirent.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<time.h>
+#include<string.h>
+#include<pwd.h>
+#include<grp.h>
+#include<limits.h>
+#include<unistd.h>
+#include<errno.h>
+
+#define PARAM_NONE 0;//後期會使用到位運算相關，而在二進制當中，這些是1 10 100 1000。方便在後續對於組合出現的處理
+#define PARAM_A 1;
+#define PARAM_L 2;
+#define PARAM_r 4;
+#define PARAM_R 8;
+#define MAXROWLEW 80;
+char PATH[PATH_MAX+1];
+int flag;
+int g_leave_len =MAXROWLEN;
+int g_maxlen;
+void my_err(const char*err_string,int line ){
+    fprintf(stderr,"line:%d",_LINE_);
+    perror(err_string);
+    exit(1);
+}
